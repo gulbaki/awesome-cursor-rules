@@ -1,0 +1,79 @@
+
+## Rules Prompt for Building a Node.js + Express.js Application
+
+1. **Project Structure & Organization**  
+   - Use a logical folder structure that separates concerns (e.g., `routes/`, `controllers/`, `services/`, `models/`, `middleware/`, `config/`, etc.).  
+   - Keep configuration files (e.g., environment variables, database credentials) separate from code.  
+   - Adhere to commonly accepted naming conventions (e.g., camelCase for variables and functions, PascalCase for classes).
+
+2. **Dependency Management**  
+   - Use `npm` (or `yarn/pnpm`) to manage dependencies.  
+   - Keep dependencies updated and pin versions in `package.json` if necessary for stability.  
+   - Avoid unnecessary dependencies to keep the project lightweight.
+
+3. **Environment & Configuration**  
+   - Use environment variables (`dotenv` or similar) to store sensitive data like API keys, database credentials, etc.  
+   - Avoid committing sensitive credentials to version control.  
+   - Provide an example `.env.example` file for easy setup by other developers.
+
+4. **Routes & Controllers**  
+   - Group related endpoints into route modules (e.g., `userRoutes.js`, `authRoutes.js`).  
+   - Keep controllers separate from the routing layer to maintain clarity and organization.  
+   - Use HTTP methods appropriately (GET, POST, PUT, DELETE) and follow RESTful conventions where possible.  
+   - Validate and sanitize request data (using packages like `express-validator` or `joi`) before proceeding to business logic.
+
+5. **Models & Database** (if applicable)  
+   - If using a database (e.g., MongoDB, PostgreSQL, MySQL), create models or schemas that accurately reflect your data.  
+   - Keep model definitions in a dedicated folder (e.g., `models/`).  
+   - Use an ORM or ODM (like `mongoose`, `sequelize`, or `prisma`) or a database client library if you prefer raw queries.  
+   - Follow best practices for indexing, relations, and handling large data sets.
+
+6. **Middleware**  
+   - Include middleware for common needs, such as:
+     - `body-parser` or built-in `express.json()` for parsing request bodies.  
+     - CORS (if applicable) with configurable whitelist.  
+     - Logging (e.g., `morgan` or `winston`).  
+     - Authentication/authorization checks.  
+     - Error handling (custom error-handling middleware).
+   - Keep middleware modular and organized in a dedicated folder.
+
+7. **Security Best Practices**  
+   - Use Helmet or similar packages to secure HTTP headers (`helmet` for Express).  
+   - Implement rate limiting (e.g., `express-rate-limit`) to prevent brute force attacks.  
+   - Employ input validation and sanitization to prevent injection attacks.  
+   - Store passwords and sensitive data securely (e.g., hashing passwords with `bcrypt`).  
+   - Use HTTPS in production and ensure TLS certificates are valid.  
+   - Keep API endpoints protected with token-based or session-based authentication as appropriate.
+
+8. **Error Handling & Logging**  
+   - Use a global error-handling middleware to catch and respond to errors consistently.  
+   - Return standardized error objects (e.g., `{ status: 400, message: "Bad Request" }`).  
+   - Log errors to the console or a logging service (e.g., `winston`, `pino`, `bunyan`).  
+   - Avoid leaking sensitive information in error responses.
+
+9. **Testing & Quality Assurance**  
+   - Write unit tests for controllers, services, and utility functions (using a framework like `Jest` or `Mocha/Chai`).  
+   - Consider integration tests for critical workflows.  
+   - Maintain consistent code style using linters (e.g., ESLint) and formatters (e.g., Prettier).  
+   - Integrate continuous integration (CI) if possible to automate testing and linting on each commit.
+
+10. **Performance Considerations**  
+   - Use async/await or promises to avoid blocking operations.  
+   - Cache frequently accessed data if necessary (e.g., Redis).  
+   - Optimize query performance in the database layer (proper indexing, efficient queries).  
+   - Use Node.js clustering or load balancing for scaling if high traffic is expected.
+
+11. **API Documentation**  
+   - Document all endpoints, request/response formats, and error codes (e.g., using Swagger/OpenAPI).  
+   - Provide quick start instructions in a `README.md` (installation, environment setup, usage).  
+   - If using versioned APIs (e.g., `/api/v1/`), make that clear in documentation.
+
+12. **Implementation Steps & Requested Output**  
+   - **Implementation**: Start by setting up the initial Express server, then configure environment variables, connect to the database, create routes/controllers, add middleware, and finalize security and testing.  
+   - **Output**: Provide a functioning Node.js + Express.js project that can be cloned, installed with `npm install`, configured via `.env`, and run with `npm start` or a similar command.  
+   - **Maintainability**: Write clear, modular code, with comments where needed and thorough documentation so that future developers can easily update or extend the application.
+
+---
+
+**Usage**:  
+Copy these rules (modifying them as needed) and paste them into your AI assistant before asking it to generate or refine your Node.js + Express.js code. By outlining these standards, you’ll ensure your project is developed with best practices in mind, remains secure, and is easy to maintain over time.
